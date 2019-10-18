@@ -3,44 +3,64 @@ package ua.edu.ucu.tempseries;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Before;
+import java.util.InputMismatchException;
+import java.util.Arrays;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class TemperatureSeriesAnalysisTest {
+    double[] temperatureSeries = {0.0, -1.0, 7, -10, -20.0, 60.0};
 
-    @Test
-    public void testAverageWithOneElementArray() {
-        // setup input data and expected result
-        double[] temperatureSeries = {-1.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double expResult = -1.0;
 
-        // call tested method
-        double actualResult = seriesAnalysis.average();
+  @Test
+   public void testAverage(){
+       expected = 6;
+       actual = temperatureSeries.average();
+       assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void testDeviation(){
+        expected = 6;
+        actual = temperatureSeries.average();
+        assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void testMin(){
+        expected = -20;
+        actual = temperatureSeries.min();
+        assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void testMax(){
+       expected = 60;
+       actual = temperatureSeries.max();
+       assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void testClosesttoZero(){
+       expected = 0;
+       actual = temperatureSeries.findTempClosestToZero();
+       assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void testClosesttoValue(){
+       expected = 7;
+       actual = temperatureSeries.findTempClosestToValue(6);
+       assertEquals(expected, actual, 0.000001);
+   }
+   @Test
+   public void findTempsLessThen(){
+        expected = {0.0, -1.0, -10, -20.0};
+        actual = temperatureSeries.findTempsLessThen(1);
+        assertArrayEquals(expected, actual);
+   }
 
-        // compare expected result with actual result
-        assertEquals(expResult, actualResult, 0.00001);
-    }
 
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void testAverageWithEmptyArray() {
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
-        // expect exception here
-        seriesAnalysis.average();
-    }
 
-    
-    @Test
-    public void testAverage() {
-        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double expResult = 1.0;
 
-        double actualResult = seriesAnalysis.average();
-
-        assertEquals(expResult, actualResult, 0.00001);
-    }
 
 
 }
