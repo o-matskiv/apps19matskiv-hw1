@@ -11,11 +11,13 @@ import static org.junit.Assert.assertEquals;
 
 
 public class TemperatureSeriesAnalysisTest {
-    double[] temperatures = {0.0, -1.0, 7, -10, -20.0, 60.0};
+    double[] temperatures = {0.0, -1.0, 7.0, -10, -20.0, 60.0};
     double expected;
     double[] expectedarray;
     double[] actualarray;
     double actual;
+    int expected_size;
+    int actual_size;
     private TemperatureSeriesAnalysis temperatureSeries;
 
     @Before
@@ -66,9 +68,22 @@ public class TemperatureSeriesAnalysisTest {
    }
     @Test
     public void testfindTempsLessThen(){
-        expectedarray = new double[]{0.0, -1.0, 7, -10, -20.0, 60.0};
+        expectedarray = new double[]{0.0, -1.0, -10, -20.0};
         actualarray = temperatureSeries.findTempsLessThen(6.0);
         assertEquals(1, 1, 0.000001);
+    }
+    @Test
+    public void testfindTempsGreaterThen(){
+        expectedarray = new double[]{7.0, 60.0};
+        actualarray = temperatureSeries.findTempsLessThen(6.0);
+        assertEquals(1, 1, 0.000001);
+    }
+    @Test
+    public void testaddTemps(){
+        expected_size = 8;
+        expectedarray = new double[]{3.0,5.0};
+        actual_size = temperatureSeries.addTemps(expectedarray);
+        assertEquals(expected_size, actual_size, 0.000001);
     }
 
 
