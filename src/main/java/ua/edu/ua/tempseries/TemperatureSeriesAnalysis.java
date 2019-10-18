@@ -151,14 +151,14 @@ public class TemperatureSeriesAnalysis {
         return null;
     }
 
-    // public TempSummaryStatistics summaryStatistics() {
-    //   if (temperatureSeries.length==0) {
-    //     throw new IllegalArgumentException();
-    //   }else{
-    //     return new TempSummaryStatistics(this);
-    //
-    //   }
-    // }
+    public TempSummaryStatistics summaryStatistics() {
+      if (temperatureSeries.length==0) {
+        throw new IllegalArgumentException();
+      }else{
+        return new TempSummaryStatistics(this);
+
+      }
+    }
 
     public int addTemps(double... temps) {
         int new_size = temperatureSeries.length + temps.length;
