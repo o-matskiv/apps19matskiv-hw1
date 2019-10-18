@@ -1,16 +1,16 @@
 package ua.edu.ucu.tempseries;
 
 public class TempSummaryStatistics {
-    private double avgTemp;
-    private double devTemp;
-    private double minTemp;
-    private double maxTemp;
+     double avgTemp;
+     double devTemp;
+     double minTemp;
+     double maxTemp;
 
-    public TempSummaryStatistics(double[] temperatureSeries) {
-        this.avgTemp = temperatureSeries.average();
-        this.devTemp = temperatureSeries.deviation();
-        this.minTemp = temperatureSeries.min();
-        this.maxTemp = temperatureSeries.max();
+    public TempSummaryStatistics(TemperatureSeriesAnalysis series) {
+        avgTemp = series.average();
+        devTemp = series.deviation();
+        minTemp = series.min();
+        maxTemp = series.max();
     }
 
     public double getAvgTemp() {
@@ -28,4 +28,6 @@ public class TempSummaryStatistics {
     public double getMaxTemp() {
         return maxTemp;
     }
+
+
 }
