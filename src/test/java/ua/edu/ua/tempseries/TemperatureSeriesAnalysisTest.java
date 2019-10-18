@@ -66,13 +66,13 @@ public class TemperatureSeriesAnalysisTest {
    }
     @Test
     public void testfindTempsLessThen(){
-        expectedarray = new double[]{0.0, -1.0, -10, -20.0};
+        expectedarray = new double[]{0.0, -1.0, -10, -20.0, null,null};
         actualarray = temperatureSeries.findTempsLessThen(6.0);
         assertArrayEquals(expectedarray, actualarray, 0.000001);
     }
     @Test
     public void testfindTempsGreaterThen(){
-        expectedarray = new double[]{7.0, 60.0};
+        expectedarray = new double[]{7.0, 60.0, null,null,null,null};
         actualarray = temperatureSeries.findTempsLessThen(6.0);
         assertArrayEquals(expectedarray, actualarray, 0.000001);
     }
