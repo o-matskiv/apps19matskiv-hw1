@@ -28,14 +28,15 @@ public class TemperatureSeriesAnalysis {
           double sum = 0;
           for (int i = 0; i < temperatureSeries.length; i++) {
             sum = sum + temperatureSeries[i];
+
+          }
           ave = sum/temperatureSeries.length;
           return ave;
-          }
       }
       catch(Exception e){
         throw new IllegalArgumentException();
       }
-      return 0;
+
     }
 
     public double deviation() {
@@ -61,13 +62,13 @@ public class TemperatureSeriesAnalysis {
           for (int i = 0; i < temperatureSeries.length; i++) {
               if (min > temperatureSeries[i])
                   min = temperatureSeries[i];
-          return min;
+
         }
+          return min;
       }
       catch(Exception e){
         throw new IllegalArgumentException();
       }
-      return 0;
       }
 
     public double max() {
@@ -76,13 +77,13 @@ public class TemperatureSeriesAnalysis {
           for (int i = 0; i < temperatureSeries.length; i++) {
               if (max < temperatureSeries[i])
                   max = temperatureSeries[i];
-          return max;
+
       }
+          return max;
       }
       catch(Exception e){
         throw new IllegalArgumentException();
       }
-      return 0;
 
         }
 
@@ -108,13 +109,13 @@ public class TemperatureSeriesAnalysis {
           for (int i = 0; i < temperatureSeries.length; i++) {
               if (Math.abs(closest-tempValue) > Math.abs(temperatureSeries[i]-tempValue))
                   closest = temperatureSeries[i];
-          return closest;
+
         }
+          return closest;
       }
       catch(Exception e){
         throw new IllegalArgumentException();
       }
-      return 0;
     }
 
     public double[] findTempsLessThen(double tempValue) {
@@ -133,44 +134,44 @@ public class TemperatureSeriesAnalysis {
 
         return null;
     }
-
-    public double[] findTempsGreaterThen(double tempValue) {
-      double greaterthen[] = new double[temperatureSeries.length];
-
-      try{
-        double closest = temperatureSeries[0];
-          for (int i = 0; i < temperatureSeries.length; i++) {
-              if (tempValue < temperatureSeries[i])
-                greaterthen[i] = temperatureSeries[i];
-          return greaterthen;
-        }
-      }
-      catch(Exception e){
-        throw new IllegalArgumentException();
-      }
-        return null;
-    }
-
-    public TempSummaryStatistics summaryStatistics() {
-      if (temperatureSeries.length==0) {
-        throw new IllegalArgumentException();
-      }else{
-        return new TempSummaryStatistics(this);
-
-      }
-    }
-
-    public int addTemps(double... temps) {
-        int new_size = temperatureSeries.length + temps.length;
-        int old_size = temperatureSeries.length;
-        double[] new_temperatureSeries;
-        new_temperatureSeries = new double[new_size];
-          for (int i =0; i < old_size; i++) {
-            new_temperatureSeries[i] = temperatureSeries[i];
-          }
-          for (int i = old_size; i < new_size; i++) {
-            new_temperatureSeries[i] = temps[i-old_size];
-          }
-        return new_size;
-    }
+//
+//    public double[] findTempsGreaterThen(double tempValue) {
+//      double greaterthen[] = new double[temperatureSeries.length];
+//
+//      try{
+//        double closest = temperatureSeries[0];
+//          for (int i = 0; i < temperatureSeries.length; i++) {
+//              if (tempValue < temperatureSeries[i])
+//                greaterthen[i] = temperatureSeries[i];
+//          return greaterthen;
+//        }
+//      }
+//      catch(Exception e){
+//        throw new IllegalArgumentException();
+//      }
+//        return null;
+//    }
+//
+//    public TempSummaryStatistics summaryStatistics() {
+//      if (temperatureSeries.length==0) {
+//        throw new IllegalArgumentException();
+//      }else{
+//        return new TempSummaryStatistics(this);
+//
+//      }
+//    }
+//
+//    public int addTemps(double... temps) {
+//        int new_size = temperatureSeries.length + temps.length;
+//        int old_size = temperatureSeries.length;
+//        double[] new_temperatureSeries;
+//        new_temperatureSeries = new double[new_size];
+//          for (int i =0; i < old_size; i++) {
+//            new_temperatureSeries[i] = temperatureSeries[i];
+//          }
+//          for (int i = old_size; i < new_size; i++) {
+//            new_temperatureSeries[i] = temps[i-old_size];
+//          }
+//        return new_size;
+//    }
 }
